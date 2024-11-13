@@ -65,7 +65,7 @@ class NeuralNet_deep(nn.Module):
 
 class NeuralNet_wide(nn.Module):
     def __init__(self):
-      super(NeuralNet_default, self).__init__()
+      super(NeuralNet_wide, self).__init__()
       self.fc1 = nn.Linear(in_features=8, out_features=128)
       self.fc2 = nn.Linear(in_features=128, out_features=128)
       self.fc3 = nn.Linear(in_features=128, out_features=1)
@@ -93,7 +93,7 @@ class NeuralNet_wide(nn.Module):
 
 class NeuralNet_deeper_wide(nn.Module):
     def __init__(self):
-        super(NeuralNet_deep, self).__init__()
+        super(NeuralNet_deeper_wide, self).__init__()
         self.fc1 = nn.Linear(in_features=8, out_features=128)
         self.fc2 = nn.Linear(in_features=128, out_features=256)
         self.fc3 = nn.Linear(in_features=256, out_features=128)
