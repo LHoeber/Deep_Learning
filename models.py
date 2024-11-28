@@ -155,3 +155,37 @@ class NeuralNet_deep_wider(nn.Module):
         x = self.fc4(x)
 
         return x
+    
+class NeuralNet_deeper_wide_classification(nn.Module):
+    def __init__(self):
+        super(NeuralNet_deeper_wide_classification, self).__init__()
+        self.fc1 = nn.Linear(in_features=8, out_features=128)
+        self.fc2 = nn.Linear(in_features=128, out_features=256)
+        self.fc3 = nn.Linear(in_features=256, out_features=128)
+        self.fc4 = nn.Linear(in_features=128, out_features=64)
+        self.fc5 = nn.Linear(in_features=64, out_features=1)
+
+    def forward(self, x):
+        # Flatten the data (B, 1, 28, 28) => (B, 784), where B is the batch size
+        x = torch.flatten(x, start_dim=1)
+
+        # Pass data through 1st fully connected layer
+        x = self.fc1(x)
+        # Apply ReLU non-linearity
+        x = F.relu(x)
+
+        # Pass data through 2nd fully connected layer
+        x = self.fc2(x)
+        # Apply ReLU non-linearity
+        x = F.relu(x)
+
+        # Pass data through 3rd fully connected layer
+        x = self.fc3(x)
+        x = F.relu(x)
+
+        x = self.fc4(x)
+        x = F.relu(x)
+        x = self.fc5(x)
+        log_probs = F.log_softmax(x, dim=1)
+
+        return log_probs
