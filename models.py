@@ -163,7 +163,7 @@ class NeuralNet_deeper_wide_classification(nn.Module):
         self.fc2 = nn.Linear(in_features=128, out_features=256)
         self.fc3 = nn.Linear(in_features=256, out_features=128)
         self.fc4 = nn.Linear(in_features=128, out_features=64)
-        self.fc5 = nn.Linear(in_features=64, out_features=1)
+        self.fc5 = nn.Linear(in_features=64, out_features=2)
 
     def forward(self, x):
         # Flatten the data (B, 1, 28, 28) => (B, 784), where B is the batch size
