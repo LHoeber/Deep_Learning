@@ -187,5 +187,4 @@ class NeuralNet_deeper_wide_classification(nn.Module):
         x = F.relu(x)
         x = self.fc5(x)
         log_probs = F.log_softmax(x, dim=1)
-
         return log_probs
